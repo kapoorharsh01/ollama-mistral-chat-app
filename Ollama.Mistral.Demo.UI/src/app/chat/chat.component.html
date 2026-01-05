@@ -1,0 +1,42 @@
+<div class="page">
+  <div class="chat-card">
+    <div class="chat-header">
+      <div class="title">
+        AI Chat
+        <span>Local Model</span>
+      </div>
+    </div>
+
+    <div class="messages">
+      <div class="empty" *ngIf="messages.length === 0 && !loading">
+        <div class="icon">🤖</div>
+        <p>Start a conversation</p>
+      </div>
+
+      <div
+        *ngFor="let m of messages"
+        class="bubble"
+        [class.user]="m.role === 'user'"
+        [class.assistant]="m.role === 'assistant'"
+      >
+        {{ m.content }}
+      </div>
+
+      <div class="bubble assistant" *ngIf="loading">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+
+    <div class="input-bar">
+      <input
+        [(ngModel)]="input"
+        (keydown.enter)="send()"
+        [disabled]="loading"
+        placeholder="Type a message..."
+      />
+      <button (click)="send()" [disabled]="loading || !input.trim()">↑</button>
+    </div>
+  </div>
+</div>
