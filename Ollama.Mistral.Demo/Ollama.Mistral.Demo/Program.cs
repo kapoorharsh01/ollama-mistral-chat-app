@@ -19,7 +19,7 @@ namespace Ollama.Mistral.Demo
             //    client.BaseAddress = new Uri("http://localhost:11434/");
             //});
 
-            // A — Named client
+            // A — Named client (Register for Ollama model server)
             builder.Services.AddHttpClient("ollama", client =>
             {
                 client.BaseAddress = new Uri("http://localhost:11434/");
